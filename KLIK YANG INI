@@ -78,7 +78,7 @@ Search ukk.smkmuh3metro.sch.id
 •	192.168.10.2 ( cek )
 •	Ping ukk.smkmuh3metro.sch.id
 
-DEBIAN GAUSAH DI CLOSE, MASUK CHANGE ADAPTER SETTING – ETHERNET – DNS ( 192.168.10.2 + 8.8.8.8 )
+MASUK CHANGE ADAPTER SETTING – ETHERNET – DNS ( 192.168.10.2 + 8.8.8.8 )
 
 •	Uji website ( chrome/edge ) ketikan ukk.smkmuh3metro.sch.id selanjutnya 192.168.10.2
 
