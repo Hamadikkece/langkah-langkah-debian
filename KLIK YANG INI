@@ -30,7 +30,7 @@ NOTE : Pastikan Komputer/Debian udah tercolok/tersambung ke internet
 auto enp0s3				
 iface enp0s3 inet statis			
 	address 10.20.30.40/24		
-	gateway 10.20.20.1		
+	gateway 10.20.30.1		
 
 NOTE : address sama gateway sesuaikan sama punya kalian
 
@@ -154,7 +154,7 @@ HAPUS SEMUA
 PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
             (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
 
-Contoh :	192.168.10.2
+Contoh :	10.20.30.40
 		8.8.8.8
 
 NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
