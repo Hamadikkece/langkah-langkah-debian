@@ -62,7 +62,7 @@ KONFIGURASI SSH SERVER
 • Apt-get update
 • Apt-get install openshh-server
 
-Note : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
+NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
        klik "Devices" di deretan atas, di menu "Optical Drivers" klik
        "debian-10.10.0-amd64-DVD-1.iso" kalau udah enter aja
 	  
