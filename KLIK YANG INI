@@ -1,103 +1,110 @@
-DEBIAN	
+==================================================================================
 
 KONFIGURASI SERVER
 
-•	Nano /etc/network/interfaces 
+• Nano /etc/network/interfaces 
 
-Auto enp0s3
-Iface enp0s3 inet statis
-	Address 192.168.10.2/30
-	Gateway 192.168.10.1
-	Dns-nameservers 192.168.10.2
+Auto enp0s3				
+Iface enp0s3 inet statis			
+	Address 192.168.10.2/30	
+	Gateway 192.168.10.1		
 
-•	/etc/init.d/networking restart
-•	Nano /etc/hosts
+• Nano /etc/hosts
 
-127.0.0.0	localhosts
-192.168.10.2	ukk.smkmuh3metro.sch.id	ILHAM-SRV-UKK
+127.0.0.1	localhosts						
+192.168.10.2	ukk.smkmuh3metro.sch.id	ILHAM-SRV-UKK		
+
+• Nano /etc/resolv.conf
+
+Nameserver 192.168.10.2		
+Nameserver 8.8.8.8			
+Search ukk.smkmuh3metro.sch.id	
+
+• /etc/init.d/networking restart
+
+==================================================================================
 
 KONFIGURASI SSH SERVER
 
-•	Apt install openshh-server ( masukan CD1 )
-•	nano /etc/ssh/sshd_config ( PermitRootLogin no)
-•	/etc/init.d/ssh restart
-•	adduser tkj
-•	adduser m3m
+• Apt-get update
+• Apt-get install openshh-server 
+• nano /etc/ssh/sshd_config ( PermitRootLogin no)
+
+• /etc/init.d/ssh restart
+• adduser tkj
+• adduser m3m
+
+==================================================================================
 
 KONFIGURASI DNS SERVER
 
-•	apt-cdrom add
-•	Apt-cdrom add [ enter- (CD-2) – enter ]
-•	Apt update
+• Apt-get install bind9 apache2 
+• Cd /etc/bind
+• Nano named.conf.default-zones
 
-•	Apt-get update
-•	Apt install bind9 dnsutils apache2 -y [ enter- (CD-1) - enter ]
-•	Cd /etc/bind
+Zone “localhost” {			 
+	Type master;			
+	File “/etc/bind/db.local”;	
+};					
 
-•	Nano named.conf.local
+Zone “127.in-addr.arpa” {		
+	Type master;			
+	File “/etc/bind/db.127”;		
+};					
 
-Zone “ukk.smkmuh3metro.sch.id” {
-	Type master;
-	File “/etc/bind/db.ukk”;
-};
+UBAH MENJADI
 
-Zone “10.168.192.addr.arpa” {
-	Type master;
-	File “/etc/bind/db.192”;
-};
+Zone “ukk.smkmuh3metro.sch.id.” {	 
+	Type master;			
+	File “/etc/bind/db.ukk”;		
+};	
 
-•	Cp db.local db.ukk
-•	Cp db.127 db.192
-•	Nano db.ukk
+Zone “192.in-addr.arpa” {		
+	Type master;			
+	File “/etc/bind/db.192”;		
+};	
+
+• Cp db.local db.ukk
+• Cp db.127 db.192
+• Nano db.ukk
 
 ( Ctrl+\ ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
 
-@	IN	NS	ukk.smkmuh3metro.sch.id.
-@	IN	A	192.168.10.2
-UKOM	IN	A	192.168.10.2
+@	IN	NS	ukk.smkmuh3metro.sch.id.	
+@	IN	A	192.168.10.2			
+WWW	IN	A	192.168.10.2	
 
-•	Nano db.192
+• Nano db.192
 
 ( Ctrl+backspace ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
 
-@	IN	NS	ukk.smkmuh3metro.sch.id.
-2	IN	PTR	ukk.smkmuh3metro.sch.id.
+@		IN	NS	ukk.smkmuh3metro.sch.id.	
+2.10.168	IN	PTR	ukk.smkmuh3metro.sch.id. 	
 
-•	/etc/init.d/bind9 restart
+• /etc/init.d/bind9 restart
 
-•	Nano /etc/resolv.conf
-
-Nameserver 192.168.10.
-Nameserver 8.8.8.8
-Search ukk.smkmuh3metro.sch.id
-
-•	Ls ( cek )
-•	Nslookup 
-•	ukk.smkmuh3metro.sch.id ( cek )
-
-•	192.168.10.2 ( cek )
-•	Ping ukk.smkmuh3metro.sch.id
-
-MASUK CHANGE ADAPTER SETTING – ETHERNET – DNS ( 192.168.10.2 + 8.8.8.8 )
-
-•	Uji website ( chrome/edge ) ketikan ukk.smkmuh3metro.sch.id selanjutnya 192.168.10.2
-
-BALIK DEBIAN
+==================================================================================
 
 KONFIGURASI WEB SERVER
 
-•	Nano /var/www/html/index.html
+• Nano /var/www/html/index.html
 
 HAPUS SEMUA
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Selamat Datang Di WebPage Master Domain UKK</title>
-  <body>
-    <h1>Selamat Datang Di WebPage Master Domain UKK</h1>
-    <h2>ILHAM DHARMA YUDHA</h2>
-  </body>
-</html>
+<!DOCTYPE html>								
+<html>										
+  <head>									
+	<title>Selamat Datang Di WebPage Master Domain UKK</title>		
+  <body>									
+        <h1>Selamat Datang Di WebPage Master Domain UKK</h1>		
+        <h2>ILHAM DHARMA YUDHA</h2>					
+  </body>									
+</html>	
 
 •	/etc/init.d/apache2 restart
+
+==================================================================================
+
+PENGUJIAN : Masukan IP Debian ke ( Change Adapter Setting – Ethernet – Properties - IPv4 – DNS )
+Contoh :	192.168.10.2
+		8.8.8.8
