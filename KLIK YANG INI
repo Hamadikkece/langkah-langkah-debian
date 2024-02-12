@@ -1,36 +1,74 @@
 ==================================================================================
 
+NOTE : Mungkin bisa buat kalian belajar untuk UKOM nanti.
+
+NOTE : Yang gapunya debian bisa download di website kitaadmin.com ketik aja
+       " Debian Download kitaadmin "
+
+NOTE : Buat cara install debian bisa liat tutor youtube/website/di chanel youtube
+       "Hamadik_" yang judulnya "MIKROTIK + DEBIAN/R1 - HAMADIK #2"
+	INSTALL DEBIAN PASTIKAN TIDAK TERSAMBUNG KE INTERNET
+
+NOTE : Kalo tanya kenapa sedikit ga banyak sama yang diajarin Pak Bowo, karena
+       ini diambil dari Soal UKK, yang cuman disuruh Konfigurasi Server,SSH,DNS
+       sama WEB Server.
+
+==================================================================================
+
 KONFIGURASI SERVER
 
-• Nano /etc/network/interfaces 
+NOTE : Pastikan settingan network kalian "Bridged Adapter" caranya
+       masuk ke "Settings" ( Klik dulu Debian kalian, samping tulisan "New" )
+       klik "Network" di "Attached to" pilih "Bridged Adapter" klik bagian
+       sesuaikan, mau pake mode wirreles (wifi) atau mode Nirkabel (LAN), klik
+       "Advanced" dari "Deny" ubah ke "Allow all" baru masuk ke debian.
 
-Auto enp0s3				
-Iface enp0s3 inet statis			
-	Address 192.168.10.2/30	
-	Gateway 192.168.10.1		
+NOTE : Pastikan Komputer/Debian udah tercolok/tersambung ke internet
 
-• Nano /etc/hosts
+• nano /etc/network/interfaces 
+
+auto enp0s3				
+iface enp0s3 inet statis			
+	address 10.20.30.40/24		
+	gateway 10.20.20.1		
+
+NOTE : address sama gateway sesuaikan sama punya kalian
+
+NOTE : Buat yang gatau caranya, masuk ke "Win+R" ketik "ipconfig" 
+       atau simplenya di debian kalian ketik "dhclient" terus
+       "ip a" nanti kalian dapet ip yang masi kosong.
+
+• nano /etc/hosts
 
 127.0.0.1	localhosts						
-192.168.10.2	ukk.smkmuh3metro.sch.id	ILHAM-SRV-UKK		
+10.20.30.40	ukk.hamadik.sch.id	Ilham		
 
-• Nano /etc/resolv.conf
+• nano /etc/resolv.conf
 
-Nameserver 192.168.10.2		
-Nameserver 8.8.8.8			
-Search ukk.smkmuh3metro.sch.id	
+nameserver 10.20.30.40		
+nameserver 8.8.8.8			
+search hamadik.sch.id	
 
-• /etc/init.d/networking restart
+• /etc/init.d/networking restart / reboot	
+
+NOTE : Kalo rasa settingan udah bener tapi waktu restart "Failed" di "reboot" aja		      	      
+
+PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
 
 ==================================================================================
 
 KONFIGURASI SSH SERVER
 
 • Apt-get update
-• Apt-get install openshh-server 
-• nano /etc/ssh/sshd_config ( PermitRootLogin no)
+• Apt-get install openshh-server
 
+Note : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
+       klik "Devices" di deretan atas, di menu "Optical Drivers" klik
+       "debian-10.10.0-amd64-DVD-1.iso" kalau udah enter aja
+	  
+• nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
+
 • adduser tkj
 • adduser m3m
 
@@ -38,48 +76,56 @@ KONFIGURASI SSH SERVER
 
 KONFIGURASI DNS SERVER
 
-• Apt-get install bind9 apache2 
-• Cd /etc/bind
-• Nano named.conf.default-zones
+• apt-get install bind9 apache2 
+• cd /etc/bind
+• nano named.conf.default-zones
 
-Zone “localhost” {			 
+zone “localhost” {			 
 	Type master;			
 	File “/etc/bind/db.local”;	
 };					
 
-Zone “127.in-addr.arpa” {		
+zone “127.in-addr.arpa” {		
 	Type master;			
 	File “/etc/bind/db.127”;		
 };					
 
 UBAH MENJADI
 
-Zone “ukk.smkmuh3metro.sch.id.” {	 
+zone “ukk.hamadik.sch.id” {	 
 	Type master;			
 	File “/etc/bind/db.ukk”;		
 };	
 
-Zone “192.in-addr.arpa” {		
+zone “10.in-addr.arpa” {		
 	Type master;			
-	File “/etc/bind/db.192”;		
+	File “/etc/bind/db.10”;	
 };	
 
-• Cp db.local db.ukk
-• Cp db.127 db.192
-• Nano db.ukk
+NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
+       disini masukinya 10
 
-( Ctrl+\ ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
+NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
+       db.ukk & db.10 biar mudah di inget aja
 
-@	IN	NS	ukk.smkmuh3metro.sch.id.	
+• cp db.local db.ukk
+• cp db.127 db.10
+• nano db.ukk
+
+( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
+
+@	IN	NS	ukk.hamadik.sch.id.	
 @	IN	A	192.168.10.2			
 WWW	IN	A	192.168.10.2	
 
-• Nano db.192
+• nano db.10
 
-( Ctrl+backspace ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
+( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
 
-@		IN	NS	ukk.smkmuh3metro.sch.id.	
-2.10.168	IN	PTR	ukk.smkmuh3metro.sch.id. 	
+@		IN	NS	ukk.hamadik.sch.id.	
+30.20.10	IN	PTR	ukk.hamadik.sch.id.
+
+NOTE : "30.20.10" di ambil dari "10.20.30.40/24" di balik
 
 • /etc/init.d/bind9 restart
 
@@ -87,7 +133,7 @@ WWW	IN	A	192.168.10.2
 
 KONFIGURASI WEB SERVER
 
-• Nano /var/www/html/index.html
+• nano /var/www/html/index.html
 
 HAPUS SEMUA
 
@@ -105,6 +151,15 @@ HAPUS SEMUA
 
 ==================================================================================
 
-PENGUJIAN : Masukan IP Debian ke ( Change Adapter Setting – Ethernet – Properties - IPv4 – DNS )
+PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
+            (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
+
 Contoh :	192.168.10.2
 		8.8.8.8
+
+NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 2 IP,
+       192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu tetep bisa
+       gausah panik, buat cara konfigurasinya sama kaya di atas, bedanya cuman
+       komputer kalian ga ada internetnya, tapi debian kalian ada.
+
+==================================================================================
