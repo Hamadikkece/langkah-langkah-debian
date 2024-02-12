@@ -157,9 +157,19 @@ PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless
 Contoh :	192.168.10.2
 		8.8.8.8
 
-NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 2 IP
-       192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu tetep 
-       bisa gausah panik, buat cara konfigurasinya sama kaya di atas, bedanya cuman
-       cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
+NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
+       2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
+       tetep bisa gausah panik, buat cara konfigurasinya sama kaya di atas,  
+       bedanya cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
+
+==================================================================================
+
+			       SENG SEMANGAT UKOM E
+		SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
+
+==================================================================================
+
+			        TAK KALAH PENTING
+			    JANGAN LUPA FOLLOW HAMADIK_
 
 ==================================================================================
