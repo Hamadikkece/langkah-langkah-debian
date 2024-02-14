@@ -17,7 +17,7 @@ NOTE : Kalo tanya kenapa sedikit ga banyak sama yang diajarin Pak Bowo, karena
 
 KONFIGURASI SERVER
 
-NOTE : Pastikan settingan network kalian "Bridged Adapter" caranya
+NOTE : Pastikan settingan "Network" kalian "Bridged Adapter" caranya
        masuk ke "Settings" ( Klik dulu Debian kalian, samping tulisan "New" )
        klik "Network" di "Attached to" pilih "Bridged Adapter" klik bagian
        sesuaikan, mau pake mode wirreles (wifi) atau mode Nirkabel (LAN), klik
@@ -61,7 +61,7 @@ KONFIGURASI SSH SERVER
 
 • Apt-get update
 
-NOTE : Pastikan "Done", Kalau gagal, masukin 
+NOTE : Pastikan "Done", kalau gagal, masukin 
        perintah : rm /etc/apt/sources.list.d/ms-teams.list
        terus perintah : apt-get update
 
@@ -69,7 +69,7 @@ NOTE : Pastikan "Done", Kalau gagal, masukin
 
 NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
        klik "Devices" di deretan atas, di menu "Optical Drivers" klik
-       "debian-10.10.0-amd64-DVD-1.iso" kalau udah enter aja
+       "debian-10.10.0-amd64-DVD-1.iso" kalau udah lanjut enter aja
 	  
 • nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
@@ -130,7 +130,7 @@ WWW	IN	A	192.168.10.2
 @		IN	NS	ukk.hamadik.sch.id.	
 30.20.10	IN	PTR	ukk.hamadik.sch.id.
 
-NOTE : "30.20.10" di ambil dari "10.20.30.40/24" di balik
+NOTE : "30.20.10" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
 
 • /etc/init.d/bind9 restart
 
@@ -152,7 +152,7 @@ HAPUS SEMUA
   </body>									
 </html>	
 
-•	/etc/init.d/apache2 restart
+• /etc/init.d/apache2 restart
 
 ==================================================================================
 
