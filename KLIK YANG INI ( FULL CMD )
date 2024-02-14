@@ -1,29 +1,6 @@
 ==================================================================================
 
-NOTE : Mungkin bisa buat kalian belajar untuk UKOM nanti.
-
-NOTE : Yang gapunya debian bisa download di website kitaadmin.com ketik aja
-       " Debian Download kitaadmin "
-
-NOTE : Buat cara install debian bisa liat tutor youtube/website/di chanel youtube
-       "Hamadik_" yang judulnya "MIKROTIK + DEBIAN/R1 - HAMADIK #2"
-       INSTALL DEBIAN PASTIKAN TIDAK TERSAMBUNG KE INTERNET
-
-NOTE : Kalo tanya kenapa sedikit ga banyak sama yang diajarin Pak Bowo, karena
-       ini diambil dari Soal UKK, yang cuman disuruh Konfigurasi Server,SSH,DNS
-       sama WEB Server.
-
-==================================================================================
-
 KONFIGURASI SERVER
-
-NOTE : Pastikan settingan "Network" kalian "Bridged Adapter" caranya
-       masuk ke "Settings" ( Klik dulu Debian kalian, samping tulisan "New" )
-       klik "Network" di "Attached to" pilih "Bridged Adapter" klik bagian
-       sesuaikan, mau pake mode wirreles (wifi) atau mode Nirkabel (LAN), klik
-       "Advanced" dari "Deny" ubah ke "Allow all" baru masuk ke debian.
-
-NOTE : Pastikan Komputer/Debian udah tercolok/tersambung ke internet
 
 • nano /etc/network/interfaces 
 
@@ -31,12 +8,6 @@ auto enp0s3
 iface enp0s3 inet statis			
 	address 10.20.30.40/24		
 	gateway 10.20.30.1		
-
-NOTE : address sama gateway sesuaikan sama punya kalian
-
-NOTE : Buat yang gatau caranya, masuk ke "Win+R" ketik "ipconfig" 
-       atau simplenya di debian kalian ketik "dhclient" terus
-       "ip a" nanti kalian dapet ip yang masi kosong.
 
 • nano /etc/hosts
 
@@ -51,25 +22,12 @@ search hamadik.sch.id
 
 • /etc/init.d/networking restart / reboot	
 
-NOTE : Kalo rasa settingan udah bener tapi waktu restart "Failed" di "reboot" aja		      	      
-
-PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
-
 ==================================================================================
 
 KONFIGURASI SSH SERVER
 
 • Apt-get update
-
-NOTE : Pastikan "Done", kalau gagal, masukin 
-       perintah : rm /etc/apt/sources.list.d/ms-teams.list
-       terus perintah : apt-get update ( kalo tetep gabisa, install ualng aja )
-
 • Apt-get install openshh-server
-
-NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
-       klik "Devices" di deretan atas, di menu "Optical Drivers" klik
-       "debian-10.10.0-amd64-DVD-1.iso" kalau udah lanjut enter aja
 	  
 • nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
@@ -107,12 +65,6 @@ zone “10.in-addr.arpa” {
 	File “/etc/bind/db.10”;	
 };	
 
-NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
-       disini masukinya 10
-
-NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
-       db.ukk & db.10 biar mudah di inget aja
-
 • cp db.local db.ukk
 • cp db.127 db.10
 • nano db.ukk
@@ -130,8 +82,6 @@ WWW	IN	A	192.168.10.2
 @		IN	NS	ukk.hamadik.sch.id.	
 30.20.10	IN	PTR	ukk.hamadik.sch.id.
 
-NOTE : "30.20.10" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
-
 • /etc/init.d/bind9 restart
 
 ==================================================================================
@@ -139,8 +89,6 @@ NOTE : "30.20.10" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
 KONFIGURASI WEB SERVER
 
 • nano /var/www/html/index.html
-
-HAPUS SEMUA
 
 <!DOCTYPE html>								
 <html>										
@@ -153,28 +101,5 @@ HAPUS SEMUA
 </html>	
 
 • /etc/init.d/apache2 restart
-
-==================================================================================
-
-PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
-            (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
-
-Contoh :	10.20.30.40
-		8.8.8.8
-
-NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
-       2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
-       tetep bisa gausah panik, buat cara konfigurasinya sama kaya di atas,  
-       bedanya cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
-
-==================================================================================
-
-			       SENG SEMANGAT UKOM E
-		SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
-
-==================================================================================
-
-			        TAK KALAH PENTING
-			    JANGAN LUPA FOLLOW HAMADIK_
 
 ==================================================================================
