@@ -63,7 +63,7 @@ KONFIGURASI SSH SERVER
 
 NOTE : Pastikan "Done", kalau gagal, masukin 
        perintah : rm /etc/apt/sources.list.d/ms-teams.list
-       terus perintah : apt-get update
+       terus perintah : apt-get update ( kalo tetep gabisa, install ualng aja )
 
 • Apt-get install openshh-server
 
