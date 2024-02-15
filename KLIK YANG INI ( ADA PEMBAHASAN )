@@ -61,10 +61,6 @@ KONFIGURASI SSH SERVER
 
 • Apt-get update
 
-NOTE : Pastikan "Done", kalau gagal, masukin 
-       perintah : rm /etc/apt/sources.list.d/ms-teams.list
-       terus perintah : apt-get update ( kalo tetep gabisa, install ualng aja )
-
 • Apt-get install openshh-server
 
 NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
