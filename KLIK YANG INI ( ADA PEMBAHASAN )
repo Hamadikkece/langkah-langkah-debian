@@ -1,4 +1,4 @@
-=======================================================================================================
+=============================================================================================
 
      NOTE : Mungkin bisa buat kalian belajar untuk UKOM nanti.
 
@@ -13,7 +13,7 @@
             ini diambil dari Soal UKK, yang cuman disuruh Konfigurasi Server,SSH,DNS
             sama WEB Server.
 
-=======================================================================================================
+=============================================================================================
 
 KONFIGURASI SERVER
 
@@ -59,7 +59,7 @@ Ctrl+X - y - enter
 
      PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
 
-========================================================================================================
+==============================================================================================
 
 KONFIGURASI SSH SERVER
 
@@ -88,7 +88,7 @@ KONFIGURASI SSH SERVER
 
      NOTE : Nanti kalian disuruh masukin name segala macem, itu sesuka kalian
 
-=======================================================================================================
+=============================================================================================
 
 KONFIGURASI DNS SERVER
 
@@ -181,7 +181,7 @@ Ctrl+X - y - enter
 
 • /etc/init.d/bind9 restart
 
-=======================================================================================================
+=============================================================================================
 
 KONFIGURASI WEB SERVER
 
@@ -202,7 +202,7 @@ Ctrl+X - y - enter
 
 • /etc/init.d/apache2 restart
 
-=======================================================================================================
+=============================================================================================
 
      PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
             (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
@@ -228,16 +228,16 @@ Ctrl+X - y - enter
 #####################################################################
 
      NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
-       2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
-       tetep bisa gausah panik, buat cara konfigurasinya sama kaya di atas,  
-       bedanya cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
+            2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
+            tetep bisa gausah panik, buat cara konfigurasinya sama kaya di atas,  
+            bedanya cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
 
-=======================================================================================================
+=============================================================================================
      
 			            SENG SEMANGAT UKOM E
-	     	SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
+	             SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
 
-=======================================================================================================
+=============================================================================================
 
 			             TAK KALAH PENTING
 			         JANGAN LUPA FOLLOW HAMADIK_
