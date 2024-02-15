@@ -6,7 +6,7 @@ KONFIGURASI SERVER
 • nano /etc/hosts
 
 • nano /etc/resolv.conf
-• /etc/init.d/networking restart / reboot	
+• /etc/init.d/networking restart
 
 ==================================================================================
 
@@ -15,7 +15,7 @@ KONFIGURASI SSH SERVER
 • Apt-get update
 • Apt-get install openshh-server
 	  
-• nano /etc/ssh/sshd_config ( PermitRootLogin no)
+• nano /etc/ssh/sshd_config
 • /etc/init.d/ssh restart
 
 • adduser tkj
