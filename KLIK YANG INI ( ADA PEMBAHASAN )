@@ -1,29 +1,29 @@
-==================================================================================
+=======================================================================================================
 
-NOTE : Mungkin bisa buat kalian belajar untuk UKOM nanti.
+     NOTE : Mungkin bisa buat kalian belajar untuk UKOM nanti.
 
-NOTE : Yang gapunya debian bisa download di website kitaadmin.com ketik aja
-       " Debian Download kitaadmin "
+     NOTE : Yang gapunya debian bisa download di website kitaadmin.com ketik aja
+            " Debian Download kitaadmin "
 
-NOTE : Buat cara install debian bisa liat tutor youtube/website/di chanel youtube
-       "Hamadik_" yang judulnya "MIKROTIK + DEBIAN/R1 - HAMADIK #2"
-       INSTALL DEBIAN PASTIKAN TIDAK TERSAMBUNG KE INTERNET
+     NOTE : Buat cara install debian bisa liat tutor youtube/website/di chanel youtube
+            "Hamadik_" yang judulnya "MIKROTIK + DEBIAN/R1 - HAMADIK #2"
+            INSTALL DEBIAN PASTIKAN TIDAK TERSAMBUNG KE INTERNET
+     
+     NOTE : Kalo tanya kenapa sedikit ga banyak sama yang diajarin Pak Bowo, karena
+            ini diambil dari Soal UKK, yang cuman disuruh Konfigurasi Server,SSH,DNS
+            sama WEB Server.
 
-NOTE : Kalo tanya kenapa sedikit ga banyak sama yang diajarin Pak Bowo, karena
-       ini diambil dari Soal UKK, yang cuman disuruh Konfigurasi Server,SSH,DNS
-       sama WEB Server.
-
-==================================================================================
+=======================================================================================================
 
 KONFIGURASI SERVER
 
-NOTE : Pastikan settingan "Network" kalian "Bridged Adapter" caranya
-       masuk ke "Settings" ( Klik dulu Debian kalian, samping tulisan "New" )
-       klik "Network" di "Attached to" pilih "Bridged Adapter" klik bagian
-       sesuaikan, mau pake mode wirreles (wifi) atau mode Nirkabel (LAN), klik
-       "Advanced" dari "Deny" ubah ke "Allow all" baru masuk ke debian.
+     NOTE : Pastikan settingan "Network" kalian "Bridged Adapter" caranya
+            masuk ke "Settings" ( Klik dulu Debian kalian, samping tulisan "New" )
+            klik "Network" di "Attached to" pilih "Bridged Adapter" klik bagian
+            sesuaikan, mau pake mode wirreles (wifi) atau mode Nirkabel (LAN), klik
+            "Advanced" dari "Deny" ubah ke "Allow all" baru masuk ke debian.
 
-NOTE : Pastikan Komputer/Debian udah tercolok/tersambung ke internet
+     NOTE : Pastikan Komputer/Debian udah tercolok/tersambung ke internet
 
 • nano /etc/network/interfaces 
 
@@ -34,9 +34,9 @@ iface enp0s3 inet statis
 
 Ctrl+X - y - enter
 
-NOTE : address sama gateway sesuaikan sama punya kalian/soal
+     NOTE : address sama gateway sesuaikan sama punya kalian/soal
 
-NOTE : Buat yang gatau caranya, masuk ke "Win+R" ketik "ipconfig" 
+     NOTE : Buat yang gatau caranya, masuk ke "Win+R" ketik "ipconfig" 
 
 • nano /etc/hosts
 
@@ -55,30 +55,30 @@ Ctrl+X - y - enter
 
 • /etc/init.d/networking restart / reboot	
 
-NOTE : Kalo rasa settingan udah bener tapi waktu restart "Failed" di "reboot" aja		      	      
+     NOTE : Kalo rasa settingan udah bener tapi waktu restart "Failed" di "reboot" aja		      	      
 
-PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
+     PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
 
-==================================================================================
+========================================================================================================
 
 KONFIGURASI SSH SERVER
 
 • apt-get update
 
-NOTE : Kalo gagal update/langsung selesai tanpa ada loading tulisan "get 1-6"
+     NOTE : Kalo gagal update/langsung selesai tanpa ada loading tulisan "get 1-6"
        
-       ketikan cmd :        nano /etc/apt/sources.list
+            ketikan cmd :        nano /etc/apt/sources.list
 
-       dan masukan cmd :    deb http://deb.debian.org/debian/ buster main
-                            deb http://security.debian.org/debian-security buster/updates main
+            dan masukan cmd :    deb http://deb.debian.org/debian/ buster main
+                                 deb http://security.debian.org/debian-security buster/updates main
 
-       keluar, masukan cmd: apt-get update
+            keluar, masukan cmd: apt-get update
 
 • apt-get install openshh-server ( Y/N pilih Y )
 
-NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
-       klik "Devices" di deretan atas, di menu "Optical Drivers" klik
-       "debian-10.10.0-amd64-DVD-1.iso" kalau udah lanjut enter aja
+     NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
+            klik "Devices" di deretan atas, di menu "Optical Drivers" klik
+            "debian-10.10.0-amd64-DVD-1.iso" kalau udah lanjut enter aja
 	  
 • nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
@@ -86,9 +86,9 @@ NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
 • adduser tkj
 • adduser m3m
 
-NOTE : Nanti kalian disuruh masukin name segala macem, itu sesuka kalian
+     NOTE : Nanti kalian disuruh masukin name segala macem, itu sesuka kalian
 
-==================================================================================
+=======================================================================================================
 
 KONFIGURASI DNS SERVER
 
@@ -106,7 +106,7 @@ zone “127.in-addr.arpa” {
 	File “/etc/bind/db.127”;		
 };					
 
-UBAH MENJADI
+     UBAH MENJADI
 
 zone “ukk.hamadik.sch.id” {	 
 	Type master;			
@@ -120,11 +120,11 @@ zone “10.in-addr.arpa” {
 
 Ctrl+X - y - enter
 
-NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
-       disini masukinya 10
-
-NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
-       db.ukk & db.10 biar mudah di inget aja
+     NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
+            disini masukinya 10
+     
+     NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
+            db.ukk & db.10 biar mudah di inget aja
 
 • cp db.local db.ukk
 • cp db.127 db.10
@@ -177,11 +177,11 @@ $TTL    604800
 
 Ctrl+X - y - enter
 
-NOTE : "40.30.20" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
+     NOTE : "40.30.20" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
 
 • /etc/init.d/bind9 restart
 
-==================================================================================
+=======================================================================================================
 
 KONFIGURASI WEB SERVER
 
@@ -202,12 +202,12 @@ Ctrl+X - y - enter
 
 • /etc/init.d/apache2 restart
 
-==================================================================================
+=======================================================================================================
 
-PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
+     PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
             (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
 
-Contoh :	10.20.30.40
+     Contoh :	10.20.30.40
 		8.8.8.8 	
 
                 Abis itu disable - enable, WIN+R, ping ke domain yang udah
@@ -227,19 +227,19 @@ Contoh :	10.20.30.40
 	    Minimum = 36ms, Maximum = 141ms, Average = 87ms
 #####################################################################
 
-NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
+     NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
        2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
        tetep bisa gausah panik, buat cara konfigurasinya sama kaya di atas,  
        bedanya cuman komputer kalian ga ada internetnya, tapi debian kalian ada.
 
-==================================================================================
+=======================================================================================================
+     
+			            SENG SEMANGAT UKOM E
+	     	SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
 
-			       SENG SEMANGAT UKOM E
-		SELAIN DEBIAN, MASIH ADA FIBER OPTIC DAN MIKROTIK
+=======================================================================================================
 
-==================================================================================
+			             TAK KALAH PENTING
+			         JANGAN LUPA FOLLOW HAMADIK_
 
-			        TAK KALAH PENTING
-			    JANGAN LUPA FOLLOW HAMADIK_
-
-==================================================================================
+=======================================================================================================
