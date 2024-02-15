@@ -61,7 +61,7 @@ KONFIGURASI SSH SERVER
 
 • apt-get update
 
-NOTE : (Kalo kalian gagal update/langsung selesai tanpa ada loading tulisan "get")
+NOTE : Kalo kalian gagal update/langsung selesai tanpa ada loading tulisan "get"
        
        ketikan cmd :        nano /etc/apt/sources.list
 
