@@ -32,22 +32,26 @@ iface enp0s3 inet statis
 	address 10.20.30.40/24		
 	gateway 10.20.30.1	
 
-NOTE : address sama gateway sesuaikan sama punya kalian
+Ctrl+X - y - enter
+
+NOTE : address sama gateway sesuaikan sama punya kalian/soal
 
 NOTE : Buat yang gatau caranya, masuk ke "Win+R" ketik "ipconfig" 
-       atau simplenya di debian kalian ketik "dhclient" terus
-       "ip a" nanti kalian dapet ip yang masi kosong.
 
 • nano /etc/hosts
 
 127.0.0.1	localhosts						
-10.20.30.40	ukk.hamadik.sch.id	Ilham		
+10.20.30.40	ukk.hamadik.sch.id	Ilham	
+
+Ctrl+X - y - enter
 
 • nano /etc/resolv.conf
 
 nameserver 10.20.30.40		
 nameserver 8.8.8.8			
 search hamadik.sch.id	
+
+Ctrl+X - y - enter
 
 • /etc/init.d/networking restart / reboot	
 
@@ -61,7 +65,7 @@ KONFIGURASI SSH SERVER
 
 • apt-get update
 
-NOTE : Kalo kalian gagal update/langsung selesai tanpa ada loading tulisan "get"
+NOTE : Kalo gagal update/langsung selesai tanpa ada loading tulisan "get 1-6"
        
        ketikan cmd :        nano /etc/apt/sources.list
 
@@ -70,7 +74,7 @@ NOTE : Kalo kalian gagal update/langsung selesai tanpa ada loading tulisan "get"
 
        keluar, masukan cmd: apt-get update
 
-• apt-get install openshh-server
+• apt-get install openshh-server ( Y/N pilih Y )
 
 NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
        klik "Devices" di deretan atas, di menu "Optical Drivers" klik
@@ -81,6 +85,8 @@ NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
 
 • adduser tkj
 • adduser m3m
+
+NOTE : Nanti kalian disuruh masukin name segala macem, itu sesuka kalian
 
 ==================================================================================
 
@@ -112,6 +118,8 @@ zone “10.in-addr.arpa” {
 	File “/etc/bind/db.10”;	
 };	
 
+Ctrl+X - y - enter
+
 NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
        disini masukinya 10
 
@@ -124,18 +132,52 @@ NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
 
 ( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
 
-@	IN	NS	ukk.hamadik.sch.id.	
-@	IN	A	192.168.10.2			
-WWW	IN	A	192.168.10.2	
+Contoh hasil jadi:
+
+#####################################################################
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     ukk.hamadik.co.id. root.ukk.hamadik.co.id. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ukk.hamadik.co.id.
+@       IN      A       10.20.30.40
+WWW     IN      A       10.20.30.40
+#####################################################################
+
+Ctrl+X - y - enter
 
 • nano db.10
 
 ( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
 
-@		IN	NS	ukk.hamadik.sch.id.	
-30.20.10	IN	PTR	ukk.hamadik.sch.id.
+Contoh hasil jadi:
 
-NOTE : "30.20.10" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
+#####################################################################
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     ukk.hamadik.co.id. root.ukk.hamadik.co.id. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      ukk.hamadik.co.id.
+40.30.20        IN      PTR     ukk.hamadik.co.id.
+#####################################################################
+
+Ctrl+X - y - enter
+
+NOTE : "40.30.20" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
 
 • /etc/init.d/bind9 restart
 
@@ -145,17 +187,18 @@ KONFIGURASI WEB SERVER
 
 • nano /var/www/html/index.html
 
-HAPUS SEMUA
+HAPUS SEMUA, Ganti menjadi
 
 <!DOCTYPE html>								
 <html>										
   <head>									
 	<title>Selamat Datang Di WebPage Master Domain UKK</title>		
   <body>									
-        <h1>Selamat Datang Di WebPage Master Domain UKK</h1>		
-        <h2>ILHAM DHARMA YUDHA</h2>					
+        <h1>Selamat Datang Di WebPage Master Domain UKK</h1>						
   </body>									
 </html>	
+
+Ctrl+X - y - enter
 
 • /etc/init.d/apache2 restart
 
@@ -165,7 +208,24 @@ PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless
             (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
 
 Contoh :	10.20.30.40
-		8.8.8.8
+		8.8.8.8 	
+
+                Abis itu disable - enable, WIN+R, ping ke domain yang udah
+	        kalian buat, contoh : ping ukk.hamadik.co.id
+	        pastikan ip yang di dalam kurung itu ip kalian, contoh :
+
+#####################################################################
+	Pinging ukk.hamadik.co.id [10.20.30.40] with 32 bytes of data:
+	Reply from 10.20.30.40: bytes=32 time=133ms TTL=58
+	Reply from 10.20.30.40: bytes=32 time=141ms TTL=58
+	Reply from 10.20.30.40: bytes=32 time=38ms TTL=58
+	Reply from 10.20.30.40: bytes=32 time=36ms TTL=58
+	
+	Ping statistics for 10.20.30.40:
+	    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+	Approximate round trip times in milli-seconds:
+	    Minimum = 36ms, Maximum = 141ms, Average = 87ms
+#####################################################################
 
 NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
        2 IP 192.168.x.1/30 buat mikrotik, 192.168.x.2/30 buat debian-nya. itu  
