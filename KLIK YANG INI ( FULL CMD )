@@ -12,9 +12,10 @@ KONFIGURASI SERVER
 
 KONFIGURASI SSH SERVER
 
+• nano /etc/apt/sources.list
 • Apt-get update
-• Apt-get install openshh-server
-	  
+
+• apt-get install openssh-server bind9 apache2  
 • nano /etc/ssh/sshd_config
 • /etc/init.d/ssh restart
 
@@ -25,10 +26,9 @@ KONFIGURASI SSH SERVER
 
 KONFIGURASI DNS SERVER
 
-• apt-get install bind9 apache2 
 • cd /etc/bind
-
 • nano named.conf.default-zones
+
 • cp db.local db.ukk
 • cp db.127 db.10
 
