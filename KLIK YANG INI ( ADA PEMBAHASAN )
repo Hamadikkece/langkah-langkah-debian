@@ -53,9 +53,7 @@ search hamadik.sch.id
 
 Ctrl+X - y - enter
 
-• /etc/init.d/networking restart / reboot	
-
-     NOTE : Kalo rasa settingan udah bener tapi waktu restart "Failed" di "reboot" aja		      	      
+• /etc/init.d/networking restart	 	      
 
      PENGUJIAN : ping 8.8.8.8 ( Pastikan TTL/Konek Internet )
 
@@ -63,22 +61,15 @@ Ctrl+X - y - enter
 
 KONFIGURASI SSH SERVER
 
+• nano /etc/apt/sources.list
+
+deb http://deb.debian.org/debian/ buster main
+deb http://security.debian.org/debian-security buster/updates main
+
+Ctrl+X - y - enter
+
 • apt-get update
-
-     NOTE : Kalo gagal update/langsung selesai tanpa ada loading tulisan "get 1-6"
-       
-            ketikan cmd :        nano /etc/apt/sources.list
-
-            dan masukan cmd :    deb http://deb.debian.org/debian/ buster main
-                                 deb http://security.debian.org/debian-security buster/updates main
-
-            keluar, masukan cmd: apt-get update
-
-• apt-get install openshh-server ( Y/N pilih Y )
-
-     NOTE : Di tengah loading nanti kalian disuruh masukin "Binary-DVD-1" caranya
-            klik "Devices" di deretan atas, di menu "Optical Drivers" klik
-            "debian-10.10.0-amd64-DVD-1.iso" kalau udah lanjut enter aja
+• apt-get install openshh-server bind9 apache2
 	  
 • nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
@@ -92,7 +83,6 @@ KONFIGURASI SSH SERVER
 
 KONFIGURASI DNS SERVER
 
-• apt-get install bind9 apache2 
 • cd /etc/bind
 • nano named.conf.default-zones
 
