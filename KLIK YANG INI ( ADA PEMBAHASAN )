@@ -215,16 +215,16 @@ Ctrl+X - y - enter
 	        pastikan ip yang di dalam kurung itu ip kalian, contoh :
 
 #####################################################################
-	Pinging ukk.hamadik.co.id [10.20.30.40] with 32 bytes of data:
-	Reply from 10.20.30.40: bytes=32 time=133ms TTL=58
-	Reply from 10.20.30.40: bytes=32 time=141ms TTL=58
-	Reply from 10.20.30.40: bytes=32 time=38ms TTL=58
-	Reply from 10.20.30.40: bytes=32 time=36ms TTL=58
+Pinging ukk.hamadik.co.id [10.20.30.40] with 32 bytes of data:
+Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
+Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
+Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
+Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
 	
-	Ping statistics for 10.20.30.40:
-	    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
-	Approximate round trip times in milli-seconds:
-	    Minimum = 36ms, Maximum = 141ms, Average = 87ms
+Ping statistics for 10.20.30.40:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
 #####################################################################
 
      NOTE : Terakhir nih, nantikan waktu UKOM kita suruh pake /30 kan, cuman dapet 
