@@ -28,7 +28,7 @@ KONFIGURASI SERVER
 • nano /etc/network/interfaces 
 
 auto enp0s3				
-iface enp0s3 inet statis			
+iface enp0s3 inet static			
 	address 10.20.30.40/24		
 	gateway 10.20.30.1	
 
