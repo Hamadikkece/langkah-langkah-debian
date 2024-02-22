@@ -195,8 +195,8 @@ Ctrl+X - y - enter
 
 =============================================================================================
 
-     PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
-            (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
+     PENGUJIAN : Pindah ke PC R2 Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
+                 (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
 
      Contoh :	192.168.1.2	
 
