@@ -29,8 +29,8 @@ KONFIGURASI SERVER
 
 auto enp0s3				
 iface enp0s3 inet static			
-	address 10.20.30.40/24		
-	gateway 10.20.30.1	
+	address 192.168.1.2/30		
+	gateway 192.168.1.1	
 
 Ctrl+X - y - enter
 
@@ -41,13 +41,13 @@ Ctrl+X - y - enter
 • nano /etc/hosts
 
 127.0.0.1	localhosts						
-10.20.30.40	ukk.hamadik.sch.id	Ilham	
+192.168.1.2	ukk.smkmuh3metro.sch.id	Ilham	
 
 Ctrl+X - y - enter
 
 • nano /etc/resolv.conf
 
-nameserver 10.20.30.40		
+nameserver 192.168.1.2		
 nameserver 8.8.8.8			
 search hamadik.sch.id	
 
@@ -69,7 +69,7 @@ deb http://security.debian.org/debian-security buster/updates main
 Ctrl+X - y - enter
 
 • apt-get update
-• apt-get install openshh-server bind9 apache2
+• apt-get install openshh-server
 	  
 • nano /etc/ssh/sshd_config ( PermitRootLogin no)
 • /etc/init.d/ssh restart
@@ -83,6 +83,7 @@ Ctrl+X - y - enter
 
 KONFIGURASI DNS SERVER
 
+• apt-get install bind9 apache2
 • cd /etc/bind
 • nano named.conf.default-zones
 
@@ -98,29 +99,29 @@ zone “127.in-addr.arpa” {
 
      UBAH MENJADI
 
-zone “ukk.hamadik.sch.id” {	 
+zone “ukk.smkmuh3metro.sch.id” {	 
 	Type master;			
 	File “/etc/bind/db.ukk”;		
 };	
 
-zone “10.in-addr.arpa” {		
+zone “192.in-addr.arpa” {		
 	Type master;			
-	File “/etc/bind/db.10”;	
+	File “/etc/bind/db.192”;	
 };	
 
 Ctrl+X - y - enter
 
-     NOTE : 10 di ambil dari optet pertama ip, karena ip ini 10.20.30.40/24 jadi
-            disini masukinya 10
+     NOTE : 192 di ambil dari optet pertama ip, karena ip ini 192.168.1.2/30 jadi
+            disini masukinya 192
      
      NOTE : buat di "db" itu selera, bisa dinamain terserah, itu dinamain
-            db.ukk & db.10 biar mudah di inget aja
+            db.ukk & db.192 biar mudah di inget aja
 
 • cp db.local db.ukk
-• cp db.127 db.10
+• cp db.127 db.192
 • nano db.ukk
 
-( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
+( Ctrl+\ ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
 
 Contoh hasil jadi:
 
@@ -129,23 +130,23 @@ Contoh hasil jadi:
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     ukk.hamadik.co.id. root.ukk.hamadik.co.id. (
+@       IN      SOA     ukk.smkmuh3metro.sch.id. root.ukk.smkmuh3metro.sch.id. (
                               2         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
                         2419200         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@       IN      NS      ukk.hamadik.co.id.
-@       IN      A       10.20.30.40
-WWW     IN      A       10.20.30.40
+@       IN      NS      ukk.smkmuh3metro.sch.id.
+@       IN      A       192.168.1.2
+WWW     IN      A       192.168.1.2
 #####################################################################
 
 Ctrl+X - y - enter
 
-• nano db.10
+• nano db.192
 
-( Ctrl+\ ) localhost ( enter ) ukk.hamadik.sch.id ( A )
+( Ctrl+\ ) localhost ( enter ) ukk.smkmuh3metro.sch.id ( A )
 
 Contoh hasil jadi:
 
@@ -154,20 +155,20 @@ Contoh hasil jadi:
 ; BIND reverse data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     ukk.hamadik.co.id. root.ukk.hamadik.co.id. (
+@       IN      SOA     ukk.smkmuh3metro.sch.id. root.ukk.smkmuh3metro.sch.id. (
                               1         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
                         2419200         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      ukk.hamadik.co.id.
-40.30.20        IN      PTR     ukk.hamadik.co.id.
+@               IN      NS      ukk.smkmuh3metro.sch.id.
+2.1.168        IN      PTR     ukk.smkmuh3metro.sch.id.
 #####################################################################
 
 Ctrl+X - y - enter
 
-     NOTE : "40.30.20" di ambil 3 ip dari "10.20.30.40/24" cuman di balik
+     NOTE : "2.1.168" di ambil 3 ip dari "192.168.1.2/24" cuman di balik
 
 • /etc/init.d/bind9 restart
 
@@ -197,21 +198,20 @@ Ctrl+X - y - enter
      PENGUJIAN : Masukan IP Debian ke Change Adapter Setting – Ethernet/Wireless 
             (tergantung kalian internetnya dari mana) – Properties - IPv4 – DNS 
 
-     Contoh :	10.20.30.40
-		8.8.8.8 	
+     Contoh :	192.168.1.2	
 
                 Abis itu disable - enable, WIN+R, ping ke domain yang udah
-	        kalian buat, contoh : ping ukk.hamadik.co.id
+	        kalian buat, contoh : ping ukk.smkmuh3metro.sch.id
 	        pastikan ip yang di dalam kurung itu ip kalian, contoh :
 
 #####################################################################
-Pinging ukk.hamadik.co.id [10.20.30.40] with 32 bytes of data:
-Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
-Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
-Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
-Reply from 10.20.30.40: bytes=32 time<1ms TTL=64
+Pinging ukk.smkmuh3metro.sch.id [192.168.1.2] with 32 bytes of data:
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=64
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=64
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=64
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=64
 	
-Ping statistics for 10.20.30.40:
+Ping statistics for 192.168.1.2:
     Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 0ms, Average = 0ms
