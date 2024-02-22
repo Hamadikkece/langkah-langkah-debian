@@ -49,7 +49,7 @@ Ctrl+X - y - enter
 
 nameserver 192.168.1.2		
 nameserver 8.8.8.8			
-search hamadik.sch.id	
+search ukk.smkmuh3metro.sch.id	
 
 Ctrl+X - y - enter
 
@@ -162,7 +162,7 @@ $TTL    604800
                         2419200         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      ukk.smkmuh3metro.sch.id.
+@              IN      NS      ukk.smkmuh3metro.sch.id.
 2.1.168        IN      PTR     ukk.smkmuh3metro.sch.id.
 #####################################################################
 
