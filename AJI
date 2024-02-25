@@ -1,0 +1,63 @@
+IP-DNS-server: 8.8.8.8
+
+Allaw diceklis 
+
+System-Identity-R2 Nama pengguna
+
+System Users: + Nama : read
+
+Ubah pw admin: M3mx caranya klik 2 kali akun admin tis pilih pw
+
+- Buat Bridge untuk port 2 dan 3.
+
+Bridge: + Nama: Bridge Lan
+Bridge > Port : + interfaces eth 2
+             > Port : + interfaces eth 3
+
+IP-address : + buat IP utk eth 1, buat lagi utk  bridgelan, buat lagi ukk wlan 1
+Interfaces - klik Wlan 1 kali, trs hidupin Wlan nya ceklis [✓]
+
+IP-Routes + isi Gateway aja, 172.16.2.254
+
+DHCP Server 
+
+IP-Dhcp server-> Dhep setup - Wlan 2, next 3×. address to give out: 10.10.X.1-10.10.x.100, next trs sampai seces Fully.
+IP -> Dhce server-> Dhep setup BridgeLan, next 3x. address to give Out: 20.20.X.2-20.20.X.100, nex Sampal successfully
+
+Firewall
+
+Ip-firewall - NAT - General :out Interfaces: eth 1
+
+-Action: Masquerade
+
+IP-Firewall-Filter Rules: + General Chain: input
+
+profocol: klik aja, nanti Isng muncul 6 (tcp). Src address:
+20.20.2.2-20.20.x.50 Dst address: 20.20.x.1-action-drop
+Copy yg barusan dibuat, caranya klik 2 kali, lalu copy
+-General Chain: Forward Src address: 20.20.Χ.51-20.20.x100 dst address ga diuban
+Ip>Web Proxy-General: Ceklis "Enable" "Cache On Disk Di apply, trs klik [Access] dibagian appy apply + dst host : linuk.or.id path : (*).mp3. *mkv 
+action: deny
+
+Web Proxy-Dst host : Mikrotik .co.id. Action: deny
+
+Redirect to : mikrotik.smkmuh3metro.sch.id
+ip-firewall-nat- +general-chain: dst nat
+protocol: klik aja 6(tcp) dst port 80
+action: redirect   to port 8080
+
+Wifi dan Hotspot
+
+IP-Hotspot-Hotspot setup=Wlan1, nett, dns name: Hotspotukk Hotspot-ukk.smkmuh3 metro-sch.id, next
+
+Hotspot-server profile, klik 2× yg (hotspot)
+matikan coocke
+
+Interfaces: klik 2 kali yg Wlan1 Masuk menu wireless Ubah mode ap bridge ssid
+
+IP-Hotspot-user profil- : + nama: guru, address pool: dhcp pool (liat di Dhop server yg ulang, klo di Wlan dhep-pool1, isi addres poolnya yg dhcp-pool
+
+shared user: 50 rate limit: 10M/10M
+
+IP-Hotspot-User : + nama: guru pw: guru 123
+Profile guru
